@@ -1,0 +1,24 @@
+package com.mycompany.greetings;
+
+import java.util.Scanner;
+import java.util.PriorityQueue;
+
+class Greetings {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        PriorityQueue<String> nicknames = new PriorityQueue<>();
+
+        System.out.println("Enter 4 names of your classmates: ");
+        for (int i = 0; i < 4; i++) {
+            nicknames.add(scanner.nextLine());
+        }
+
+        System.out.println("Enter 'H/h' to say 'Hi' each of them!");
+        while (!nicknames.isEmpty()) {
+            scanner.nextLine();
+            System.out.printf("Hi %s!\n", nicknames.poll());                   
+        }
+        
+        System.out.println("Done saying Hi!");
+    }
+}
