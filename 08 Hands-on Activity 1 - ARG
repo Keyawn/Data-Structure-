@@ -1,0 +1,61 @@
+package com.mycompany.birthmonth;
+
+import java.util.*; 
+
+    class BirthMonth
+   { 
+       static Set<String>group1 = new HashSet<String>(); 
+       static Set<String>group2 = new HashSet<String>(); 
+       static Set<String>self = new HashSet<String>(); 
+       static Scanner sc = new Scanner(System.in); 
+    public static void main(String args[])
+    
+{
+        int size = 3;
+        String [] a = new String[size];
+        String [] b = new String[size];
+        
+        for(int i=0; i<size; i++){
+            System.out.println("Enter birth month " + (i+1) + ":");
+            
+            a[i] = sc.nextLine(); 
+            group1.add(a[i]); 
+}
+        for(int i=0; i<size; i++){
+            System.out.println("Enter birth month " + (i+1)+":");
+            b[i] = sc.nextLine();
+            group2.add(b[i]);
+        }
+        
+        System.out.println("Group 1: " + group1); 
+        System.out.println("Group 2: " + group2);
+        System.out.println("Enter your Birth month: ");
+        
+        String me = sc.nextLine();
+        self.add(me);
+        
+        Set<String>union = new HashSet<String>(group1);
+        union.addAll(group2); 
+        union.addAll(self); 
+        System.out.println("Union: " + union); 
+        
+        
+        Set<String>intersection = new HashSet<String>(group1);
+        intersection.retainAll(group2);
+        intersection.contains(self);
+        System.out.println("Intersection: " + intersection);
+        
+        
+        Set<String>difference = new HashSet<String>(group1);
+        difference.removeAll(group2); 
+        difference.remove(self);
+        
+        System.out.println("Difference: " + difference);
+        
+        if(group1.contains(me) || group2.contains(me)){ 
+            System.out.println("You have same birth month with one of your classmates");
+        }else{
+            System.out.println("You only have that birth month");
+        }
+    }
+}
